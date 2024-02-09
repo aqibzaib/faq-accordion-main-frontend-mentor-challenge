@@ -15,9 +15,9 @@ function App() {
 
   return (
     <>
-      <div className="border border-red-500 rounded-md w-[590px] h-[400px] m-auto px-8 py-8">
+      <div className="border border-red-500 rounded-lg w-[590px] h-fit m-auto px-8 py-8">
         <div>
-          <div className=" flex items-center justify-start gap-4 pt-4 pb-6">
+          <div className=" flex items-center justify-start gap-4 pt-4 pb-4">
             <span>
               <IconStar />
             </span>
