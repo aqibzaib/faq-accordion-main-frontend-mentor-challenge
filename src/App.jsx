@@ -15,42 +15,44 @@ function App() {
 
   return (
     <>
-      <div className="border border-red-500 rounded-lg w-[590px] h-fit m-auto px-8 py-8">
-        <div>
-          <div className=" flex items-center justify-start gap-4 pt-4 pb-4">
-            <span>
-              <IconStar />
-            </span>
-            <h1 className="text-4xl"> FAQs</h1>
-          </div>
-          {faqData.map((item, index) => {
-            return (
-              <div key={index}>
-                <button
-                  className={`w-[100%] flex items-center justify-between pt-3 pb-3 ${
-                    activeIndex === index
-                      ? "transition-border duration-300 ease-in-out"
-                      : "border-t-2 border-red-900 transition-border duration-500 ease-in-out"
-                  }`}
-                  onClick={() => toggleCollapse(index)}
-                >
-                  <span>{item.question}</span>
-                  <span className="pl-5 pr-5 ">
-                    {activeIndex === index ? <IconMinus /> : <IconPlus />}
-                  </span>
-                </button>
-                <div
-                  className={`overflow-hidden transition-max-h ${
-                    activeIndex === index
-                      ? "duration-500 ease-in-out max-h-screen"
-                      : "duration-300 ease-in-out max-h-0"
-                  }`}
-                >
-                  <p className="pt-4 pb-4">{item.answer}Hello</p>
+      <div className="bg-[url('../assets/images/background-pattern-desktop.svg')] bg-cover bg-center bg-no-repeat">
+        <div className="border border-white rounded-lg w-[590px] h-fit m-auto px-8 py-4 bg-white">
+          <div>
+            <div className=" flex items-center justify-start gap-4 pt-4 pb-4">
+              <span>
+                <IconStar />
+              </span>
+              <h1 className="text-4xl"> FAQs</h1>
+            </div>
+            {faqData.map((item, index) => {
+              return (
+                <div key={index}>
+                  <button
+                    className={`w-[100%] flex items-center justify-between pt-3 pb-3 ${
+                      activeIndex === index
+                        ? "transition-border duration-300 ease-in-out"
+                        : "border-t-2 border-red-900 transition-border duration-500 ease-in-out"
+                    }`}
+                    onClick={() => toggleCollapse(index)}
+                  >
+                    <span>{item.question}</span>
+                    <span className="pl-5 pr-5 ">
+                      {activeIndex === index ? <IconMinus /> : <IconPlus />}
+                    </span>
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-max-h ${
+                      activeIndex === index
+                        ? "duration-500 ease-in-out max-h-screen"
+                        : "duration-300 ease-in-out max-h-0"
+                    }`}
+                  >
+                    <p className="pt-4 pb-4">{item.answer}Hello</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
