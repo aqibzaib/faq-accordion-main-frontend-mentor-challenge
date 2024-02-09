@@ -4,10 +4,13 @@ import IconPlus from "../assets/images/icon-plus";
 import IconStar from "../assets/images/icon-star";
 
 function App() {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
+  // const toggleCollapse = (index) => {
+  //   setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  // };
+  const toggleCollapse = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
@@ -22,49 +25,32 @@ function App() {
           </div>
           {faqData.map((item, index) => {
             return (
-              <div className="" key={index}>
+              <div key={index}>
                 <button
-                  className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 border-red-900"
-                  onClick={toggleCollapse}
+                  className={`w-[100%] flex items-center justify-between pt-3 pb-3 ${
+                    activeIndex === index
+                      ? "transition-border duration-300 ease-in-out"
+                      : "border-t-2 border-red-900 transition-border duration-500 ease-in-out"
+                  }`}
+                  onClick={() => toggleCollapse(index)}
                 >
                   <span>{item.question}</span>
                   <span className="pl-5 pr-5 ">
-                    {isCollapsed ? <IconMinus /> : <IconPlus />}
+                    {activeIndex === index ? <IconMinus /> : <IconPlus />}
                   </span>
                 </button>
                 <div
-                  className={`overflow-hidden transition-max-h duration-300 ease-in-out ${
-                    isCollapsed ? "max-h-0" : "max-h-screen"
+                  className={`overflow-hidden transition-max-h ${
+                    activeIndex === index
+                      ? "duration-500 ease-in-out max-h-screen"
+                      : "duration-300 ease-in-out max-h-0"
                   }`}
                 >
-                  <p className="pt-4 pb-4">{item.answer}</p>
+                  <p className="pt-4 pb-4">{item.answer}Hello</p>
                 </div>
               </div>
             );
           })}
-          {/* <div className="">
-            <button
-              className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 border-red-900"
-              onClick={toggleCollapse}
-            >
-              <span>What is frontend Mentor and how it will help me?</span>
-              <span className="pl-5 pr-5 ">
-                {isCollapsed ? <IconMinus /> : <IconPlus />}
-              </span>
-            </button>
-            <div
-              className={`overflow-hidden transition-max-h duration-300 ease-in-out ${
-                isCollapsed ? "max-h-0" : "max-h-screen"
-              }`}
-            >
-              <p className="pt-4 pb-4">
-                Frontend Mentor offers realistic coding challenges to help
-                developers improve their frontend coding skills with projects in
-                HTML, CSS, and JavaScript. It's suitable for all levels and
-                ideal for portfolio building.
-              </p>
-            </div>
-          </div> */}
         </div>
       </div>
     </>
