@@ -20,7 +20,29 @@ function App() {
             </span>
             <h1 className="text-4xl"> FAQs</h1>
           </div>
-          <div className="">
+          {faqData.map((item, index) => {
+            return (
+              <div className="" key={index}>
+                <button
+                  className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 border-red-900"
+                  onClick={toggleCollapse}
+                >
+                  <span>{item.question}</span>
+                  <span className="pl-5 pr-5 ">
+                    {isCollapsed ? <IconMinus /> : <IconPlus />}
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-max-h duration-300 ease-in-out ${
+                    isCollapsed ? "max-h-0" : "max-h-screen"
+                  }`}
+                >
+                  <p className="pt-4 pb-4">{item.answer}</p>
+                </div>
+              </div>
+            );
+          })}
+          {/* <div className="">
             <button
               className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 border-red-900"
               onClick={toggleCollapse}
@@ -42,80 +64,34 @@ function App() {
                 ideal for portfolio building.
               </p>
             </div>
-          </div>
-          <div className="">
-            <button
-              className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 border-red-900 "
-              onClick={toggleCollapse}
-            >
-              <span className="">Is Frontend Mentor free?</span>
-              <span className="pl-5 pr-5 ">
-                {isCollapsed ? <IconMinus /> : <IconPlus />}
-              </span>
-            </button>
-            <div
-              className={`overflow-hidden transition-max-h duration-300 ease-in-out ${
-                isCollapsed ? "max-h-0" : "max-h-screen"
-              }`}
-            >
-              <p className="pt-4 pb-4">
-                Frontend Mentor offers realistic coding challenges to help
-                developers improve their frontend coding skills with projects in
-                HTML, CSS, and JavaScript. It's suitable for all levels and
-                ideal for portfolio building.
-              </p>
-            </div>
-          </div>
-          <div className="">
-            <button
-              className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 border-red-900"
-              onClick={toggleCollapse}
-            >
-              <span>Can I use Frontend Mentor projects in my portfolio?</span>
-              <span className="pl-5 pr-5 ">
-                {isCollapsed ? <IconMinus /> : <IconPlus />}
-              </span>
-            </button>
-            <div
-              className={`overflow-hidden transition-max-h duration-300 ease-in-out ${
-                isCollapsed ? "max-h-0" : "max-h-screen"
-              }`}
-            >
-              <p className="pt-4 pb-4">
-                Frontend Mentor offers realistic coding challenges to help
-                developers improve their frontend coding skills with projects in
-                HTML, CSS, and JavaScript. It's suitable for all levels and
-                ideal for portfolio building.
-              </p>
-            </div>
-          </div>
-          <div className="">
-            <button
-              className="w-[100%]  flex items-center justify-between border-t-2  pt-3 pb-3 borde"
-              onClick={toggleCollapse}
-            >
-              <span>How can I get help if I'm stuck on a challenge?</span>
-              <span className="pl-5 pr-5 ">
-                {isCollapsed ? <IconMinus /> : <IconPlus />}
-              </span>
-            </button>
-            <div
-              className={`overflow-hidden transition-max-h duration-300 ease-in-out ${
-                isCollapsed ? "max-h-0" : "max-h-screen"
-              }`}
-            >
-              <p className="pt-4 pb-4">
-                Frontend Mentor offers realistic coding challenges to help
-                developers improve their frontend coding skills with projects in
-                HTML, CSS, and JavaScript. It's suitable for all levels and
-                ideal for portfolio building.
-              </p>
-            </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
   );
 }
+
+const faqData = [
+  {
+    question: "What is frontend Mentor and how it will help me?",
+    answer:
+      "Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for all levels and ideal for portfolio building.",
+  },
+  {
+    question: "Is Frontend Mentor free?",
+    answer:
+      "Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for all levels and ideal for portfolio building.",
+  },
+  {
+    question: "Can I use Frontend Mentor projects in my portfolio?",
+    answer:
+      "Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for all levels and ideal for portfolio building.",
+  },
+  {
+    question: "How can I get help if I'm stuck on a challenge?",
+    answer:
+      "Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for all levels and ideal for portfolio building.",
+  },
+];
 
 export default App;
